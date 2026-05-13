@@ -284,8 +284,9 @@ export default function WorkbenchPage() {
     }
     setBusy(true);
     try {
+      const redirectTo = `${window.location.origin}${window.location.pathname}`;
       const authUrl = `${normalizeSupabaseUrl(settings.supabaseUrl)}/auth/v1/otp?redirect_to=${encodeURIComponent(
-        window.location.origin
+        redirectTo
       )}`;
       const response = await fetch(authUrl, {
         method: "POST",
